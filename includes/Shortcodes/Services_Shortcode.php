@@ -185,12 +185,6 @@ final class Services_Shortcode {
 						<span class="services-shortcode__sr-only"><?php printf( esc_html__( 'about %s', 'astra-child' ), esc_html( $title ) ); ?></span>
 					<?php endif; ?>
 				</a>
-				<a class="service-card__link" href="<?php echo esc_url( $button['href'] ); ?>"<?php echo $button['target']; ?>>
-					<?php echo esc_html( $button['label'] ); ?>
-					<?php if ( $button['sr_only'] ) : ?>
-						<span class="services-shortcode__sr-only"><?php printf( esc_html__( 'about %s', 'astra-child' ), esc_html( $title ) ); ?></span>
-					<?php endif; ?>
-				</a>
 			</div>
 		</article>
 		<?php
