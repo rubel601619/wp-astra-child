@@ -4,6 +4,7 @@ namespace Theme\Children\Shortcodes;
 
 defined( 'ABSPATH' ) || exit;
 
+use Theme\Children\PostTypes\Services_Post_Type;
 use WP_Query;
 
 /**
@@ -153,6 +154,7 @@ final class Services_Shortcode {
 		$permalink = get_permalink();
 		$title     = get_the_title();
 		$excerpt   = self::get_card_excerpt();
+		$button    = self::get_card_button( $permalink );
 		?>
 		<article class="service-card">
 			<a class="service-card__media" href="<?php echo esc_url( $permalink ); ?>" tabindex="-1" aria-hidden="true">
@@ -177,13 +179,52 @@ final class Services_Shortcode {
 					<p class="service-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
 				<?php endif; ?>
 
-				<a class="service-card__link" href="<?php echo esc_url( $permalink ); ?>">
-					<?php esc_html_e( 'Read More', 'astra-child' ); ?>
-					<span class="services-shortcode__sr-only"><?php printf( esc_html__( 'about %s', 'astra-child' ), esc_html( $title ) ); ?></span>
+				<a class="service-card__link" href="<?php echo esc_url( $button['href'] ); ?>"<?php echo $button['target']; ?>>
+					<?php echo esc_html( $button['label'] ); ?>
+					<?php if ( $button['sr_only'] ) : ?>
+						<span class="services-shortcode__sr-only"><?php printf( esc_html__( 'about %s', 'astra-child' ), esc_html( $title ) ); ?></span>
+					<?php endif; ?>
+				</a>
+				<a class="service-card__link" href="<?php echo esc_url( $button['href'] ); ?>"<?php echo $button['target']; ?>>
+					<?php echo esc_html( $button['label'] ); ?>
+					<?php if ( $button['sr_only'] ) : ?>
+						<span class="services-shortcode__sr-only"><?php printf( esc_html__( 'about %s', 'astra-child' ), esc_html( $title ) ); ?></span>
+					<?php endif; ?>
 				</a>
 			</div>
 		</article>
 		<?php
+	}
+
+	/**
+	 * Get the card button details.
+	 *
+	 * Uses the "Button information" meta box when a URL is set, otherwise
+	 * falls back to the service permalink with a "Read More" label.
+	 *
+	 * @param string $permalink Service permalink.
+	 * @return array{ href: string, label: string, target: string, sr_only: bool }
+	 */
+	private static function get_card_button( $permalink ) {
+		$url    = get_post_meta( get_the_ID(), Services_Post_Type::META_URL, true );
+		$text   = get_post_meta( get_the_ID(), Services_Post_Type::META_TEXT, true );
+		$newtab = get_post_meta( get_the_ID(), Services_Post_Type::META_NEW_TAB, true );
+
+		if ( '' !== $url ) {
+			return array(
+				'href'    => $url,
+				'label'   => '' !== $text ? $text : __( 'Read More', 'astra-child' ),
+				'target'  => '1' === $newtab ? ' target="_blank" rel="noopener noreferrer"' : '',
+				'sr_only' => false,
+			);
+		}
+
+		return array(
+			'href'    => $permalink,
+			'label'   => __( 'Read More', 'astra-child' ),
+			'target'  => '',
+			'sr_only' => true,
+		);
 	}
 
 	/**
