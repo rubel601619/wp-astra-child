@@ -127,3 +127,8 @@ function child_theme(){
 
 // execute the child theme
 child_theme();
+
+// load and boot the redirect management system
+require_once get_stylesheet_directory() . '/includes/redirects/class-redirect-manager.php';
+
+\AstraChild\Redirects\Redirect_Manager::instance();
