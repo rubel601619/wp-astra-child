@@ -62,9 +62,11 @@ child_theme();
 // load and boot the custom post types
 require_once get_stylesheet_directory() . '/includes/post-types/class-services-post-type.php';
 require_once get_stylesheet_directory() . '/includes/post-types/class-vaccines-post-type.php';
+require_once get_stylesheet_directory() . '/includes/post-types/class-destinations-post-type.php';
 
 \Theme\Children\PostTypes\Services_Post_Type::init();
 \Theme\Children\PostTypes\Vaccines_Post_Type::init();
+\Theme\Children\PostTypes\Destinations_Post_Type::init();
 
 // load and boot the services shortcode
 require_once get_stylesheet_directory() . '/includes/Shortcodes/Bootstrap.php';
