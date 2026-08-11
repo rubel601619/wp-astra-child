@@ -50,7 +50,7 @@ wp_enqueue_style('destinations', get_stylesheet_directory_uri() . '/assets/css/d
 						<article>
                             <a href="<?php the_permalink(); ?>" class="destination-link">
                                 <?php if ( has_post_thumbnail() ) : ?>
-                                    <?php the_post_thumbnail( 'post-thumbnail', array( 'loading' => 'lazy' ) ); ?>
+                                    <?php the_post_thumbnail( 'full', array( 'loading' => 'lazy' ) ); ?>
                                 <?php else : ?>
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/placeholder.webp" alt="<?php the_title(); ?>" loading="lazy">
                                 <?php endif; ?>

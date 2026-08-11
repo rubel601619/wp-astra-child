@@ -4,6 +4,12 @@
     gap: 1.5rem;
 }
 
+@media (max-width: 545px) {
+    .destinations-grid article{
+        max-width: calc(100% - 2.5rem);
+        margin-inline: auto
+    }
+}
 @media (min-width: 576px) {
     .destinations-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

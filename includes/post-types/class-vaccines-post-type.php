@@ -97,7 +97,7 @@ final class Vaccines_Post_Type {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'vaccines' ),
 			'capability_type'    => 'post',
-			'has_archive'        => true,
+			'has_archive'        => 'all-vaccines',
 			'hierarchical'       => false,
 			'menu_position'      => 5,
 			'menu_icon'          => 'dashicons-tablet',

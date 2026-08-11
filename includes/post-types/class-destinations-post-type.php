@@ -103,7 +103,7 @@ final class Destinations_Post_Type {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'destinations' ),
 			'capability_type'    => 'post',
-			'has_archive'        => true,
+			'has_archive'        => 'all-destinations',
 			'hierarchical'       => false,
 			'menu_position'      => self::MENU_POSITION,
 			'menu_icon'          => 'dashicons-location-alt',
