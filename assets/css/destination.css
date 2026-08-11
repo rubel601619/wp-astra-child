@@ -1,0 +1,60 @@
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+@media (min-width: 576px) {
+    .destinations-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .destinations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1200px) {
+    .destinations-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+.destination-link{
+    position: relative;
+    display: block;
+    aspect-ratio: 3/4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #f0f0f0;
+     box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px #366BA2;
+
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    h2{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 1.25rem;
+    }
+
+    &:hover{
+        img{
+            transform: scale(1.15) rotate(2deg);
+        }
+    }
+}
